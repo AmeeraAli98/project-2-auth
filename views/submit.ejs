@@ -20,14 +20,14 @@
         <form id="form-submit" action='submissions/upload' method='post'  enctype="multipart/form-data">
             <div class="mb-2">
                 <label for="seshName" class="form-label">Session name</label>
-                <input type="text" name="seshName" id="seshName" />
+                <input type="text" name="seshName" id="seshName" required/>
             </div>
             <div class="mb-2 ">
                 <label for="uploader" class="form-label">Your name</label>
-                <input type="text" id="uploader" name="uploader"/>
+                <input type="text" id="uploader" name="uploader" required/>
             </div>
             <div class="mb-2">
-                <input type="file" name="upfile" />
+                <input type="file" name="upfile" required />
             </div>
             <button type="submit" class="btn btn-dark mt-3">Upload</button>
             

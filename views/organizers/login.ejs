@@ -1,12 +1,4 @@
-<!-- <form action="/organizers/login" method="POST">
-    <label for="Username">Username:</label>
-    <input  name="username" id="username">
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password">
-
-    <button type="submit">Login</button>
-</form> -->
 <div id="wrapper-new">
     <div class="container">
         <ul class="progressbar">
@@ -19,12 +11,13 @@
     <div id="init-login" class="container rounded-4 border border-dark pt-5 ps-9"> 
         <form action="/organizers/login" method="POST" id="signUp">
             <div class="mb-2">
-                <label for="username" class="form-label">Username</label>
+                <label for="username" class="form-label" >Username</label>
                 <input type="text" name="username" class="form-control" id="username">
             </div>
             <div class="mb-2">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password">
+                
             </div>
             <button type="submit" class="btn btn-dark mt-3">Login</button>
             
@@ -32,3 +25,19 @@
 
     </form>
 </div>
+<!-- error handeling -->
+<%if(name_error!=""){%>
+    <div class="alert alert-danger w-25 mt-3" role="alert" style="margin-left:34%" >
+        <%=name_error%>
+      </div>
+<%}%>
+<%if(exists_error!=""){%>
+    <div class="alert alert-danger w-25 mt-3" role="alert" style="margin-left:34%" >
+        <%=exists_error%>
+      </div>
+<%}%>
+<%if(pass_error!=""){%>
+    <div class="alert alert-danger w-25 mt-3" role="alert" style="margin-left:34%" >
+        <%=pass_error%>
+      </div>
+<%}%>

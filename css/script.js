@@ -6,5 +6,18 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 
 
 
+  $("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#list-sessions li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  
+ 
+  
+
+
+
+
 
 
