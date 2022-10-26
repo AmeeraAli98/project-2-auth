@@ -4,7 +4,6 @@ const db = require('../models')
 const router = express.Router()
 router.get("/:name/:id", async (req,res)=>{
   const get_submissions = await db.submission.findAll({where:{sessionId:req.params.id}})
-  // res.render("organizers/submissions", {submissions:get_submissions, folName:__dirname})
   res.render("organizers/submissions", {submissions:get_submissions ,session_name:req.params.name})
   })
 router.post("/upload", async (req, res) => {
@@ -31,6 +30,11 @@ router.post("/upload", async (req, res) => {
 })
 router.get("/:name", (req,res)=>{
 res.sendFile(__dirname.slice(0,__dirname.length-11)+"/Uploads/"+req.params.name)
+})
+router.post("/delete/", async(req,res)=>{
+  const found_session = await db.session.findOne({where:{id:req.body.id}})
+  found_session.destroy();
+  res.redirect("back")
 })
 
   module.exports = router;

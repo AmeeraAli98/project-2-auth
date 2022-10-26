@@ -11,8 +11,14 @@
     </div>
 <ul id="list-sessions" class="list-group shadow mt-3"> 
   <% userSeshs.forEach(ele=>{%>
-        <li class="list-group-item d-flex justify-content-between"><%= ele.dataValues.seshName%> <a href="/submissions/<%=ele.dataValues.seshName%>/<%=ele.dataValues.id%>" ><i class="fa-sharp fa-solid fa-arrow-right" style="color:black;font-size:26px"></i>
-        </a></li> 
+        <li class="list-group-item d-flex justify-content-between"><%= ele.dataValues.seshName%> 
+          <a href="/submissions/<%=ele.dataValues.seshName%>/<%=ele.dataValues.id%>" ><i class="fa-sharp fa-solid fa-arrow-right" style="color:black;font-size:26px"></i>
+        </a>
+        <form method="post" action="/submissions/delete">
+          <input type="hidden" name="id" value="<%=ele.dataValues.id%>"/>
+        <button><i class="fa-solid fa-trash"></i></button>
+      </form>
+      </li> 
         <%})%> 
 
        
