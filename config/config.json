@@ -1,7 +1,9 @@
 {
   "development": {
-    "database": "auth_boilerplate",
+    "database": "submission_sys",
     "host": "127.0.0.1",
+    "username":"postgres",
+    "password":"ameera",
     "dialect": "postgres"
   },
   "test": {

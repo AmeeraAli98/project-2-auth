@@ -1,0 +1,37 @@
+<!-- <form action="/organizers/login" method="POST">
+    <label for="Username">Username:</label>
+    <input  name="username" id="username">
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password">
+
+    <button type="submit">Login</button>
+</form> -->
+<div id="wrapper-new">
+    <div class="container">
+        <ul class="progressbar">
+            <li class="active"></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <p id="question" class="display-6 fw-semibold">Upload a file</p>
+    <div id="init" class="container rounded-4 border border-dark pt-5 pb-3"> 
+        <form id="form-submit" action='submissions/upload' method='post'  enctype="multipart/form-data">
+            <div class="mb-2">
+                <label for="seshName" class="form-label">Session name</label>
+                <input type="text" name="seshName" id="seshName" />
+            </div>
+            <div class="mb-2 ">
+                <label for="uploader" class="form-label">Your name</label>
+                <input type="text" id="uploader" name="uploader"/>
+            </div>
+            <div class="mb-2">
+                <input type="file" name="upfile" />
+            </div>
+            <button type="submit" class="btn btn-dark mt-3">Upload</button>
+            
+            </div>
+
+    </form>
+</div>

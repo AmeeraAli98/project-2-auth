@@ -1,0 +1,31 @@
+
+<!-- <h2>Hello, <%= user.username%> :)  </h2> -->
+<header>
+    <form method="get">
+        <i class="fa-solid fa-magnifying-glass" ></i>
+        <input type="text" id="search" placeholder="Search" size="50"/>
+    </form>
+<!--  a new Session
+    <form method="post" action="/organizers/new-session">
+    <input name="seshName"/>
+    
+    <input type="submit" value="add a new session">
+</form> -->
+</header>
+      <div class="d-flex justify-content-center">
+        <span class="navbar-text fw-bold mt-2" style="font-size:25px">
+            Session <%=session_name%>
+        </span>
+         
+        </div>
+     
+<ul class="list-group shadow mt-3"> 
+        <% submissions.forEach(ele=>{%>
+            <%let sub_name = ele.dataValues.file_path%>
+            <%sub_name=sub_name.slice(8)%>
+            <li class="list-group-item"><%= ele.dataValues.uploader%><a href="/submissions/<%=sub_name%>"><i class="fa-sharp fa-solid fa-arrow-right" style="color:black;font-size:26px"></i></a>
+            <%})%> 
+     
+
+</ul>
+    

@@ -1,0 +1,77 @@
+const express = require('express')
+const db = require('../models')
+const router = express.Router()
+const cryptojs = require('crypto-js')
+require('dotenv').config()
+const bcrypt = require('bcrypt')
+
+router.get('/new', (req, res)=>{
+    res.render('organizers/new.ejs')
+})
+
+router.post('/', async (req, res)=>{
+    const [newOrganizer, created] = await db.organizer.findOrCreate({where:{username: req.body.username}})
+    if(!created){
+        console.log('user already exists')
+        res.render('organizers/login.ejs', {error: 'Looks like you already have an account! Try logging in :)'})
+    } else {
+        const hashedPassword = bcrypt.hashSync(req.body.password, 10)
+        newOrganizer.password = hashedPassword
+        await newOrganizer.save()
+        const encryptedUserId = cryptojs.AES.encrypt(newOrganizer.id.toString(), process.env.SECRET)
+        const encryptedUserIdString = encryptedUserId.toString()
+        res.cookie('userId', encryptedUserIdString)
+        res.redirect('organizers/login')
+    }
+})
+
+router.get('/login', (req, res)=>{
+    res.render('organizers/login.ejs')
+})
+
+router.post('/login', async (req, res)=>{
+    const user = await db.organizer.findOne({where: {username: req.body.username}})
+    if(!user){
+        console.log('user not found')
+        res.render('organizers/login', { error: "Invalid email/password" })
+    } else if(!bcrypt.compareSync(req.body.password, user.password)) {
+        console.log('password incorrect')
+        res.render('organizers/login', { error: "Invalid email/password" })
+    } else {
+        console.log('logging in the user!!!')
+        const encryptedUserId = cryptojs.AES.encrypt(user.id.toString(), process.env.SECRET)
+        const encryptedUserIdString = encryptedUserId.toString()
+        res.cookie('userId', encryptedUserIdString)
+        res.redirect("/organizers/profile")
+    }
+})
+
+router.get('/logout', (req, res)=>{
+    console.log('logging out')
+    res.clearCookie('userId')
+    res.redirect('/')
+})
+
+router.get('/profile', async (req, res)=>{
+    const userSeshs = await db.session.findAll({where:{organizerId:res.locals.user.id}})
+    let key = (userSeshs)=>{
+       
+    }
+
+res.render('organizers/profile.ejs', {userSeshs:userSeshs}, )
+})
+
+router.post("/new-session",async (req, res)=>{
+    const [newSession, created] = await db.session.findOrCreate({where:{seshName: req.body.seshName}})
+    if(!created){
+        console.log('session already exists')
+    } else {
+        const user = await db.organizer.findOne({where:{username:res.locals.user.username}})
+        await user.addSession(newSession
+            )
+            res.redirect("/organizers/profile")
+
+    }
+   
+})
+module.exports = router
