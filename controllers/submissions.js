@@ -22,6 +22,7 @@ router.post("/upload", async (req, res) => {
           mime_type:req.files.upfile.mimetype,
           file_path:updest
         });
+        res.redirect("/")
       
       }
       stepTwo();

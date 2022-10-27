@@ -4,7 +4,7 @@ const router = express.Router()
 const cryptojs = require('crypto-js')
 require('dotenv').config()
 const bcrypt = require('bcrypt')
-
+const axios = require("axios")
 router.get('/new', (req, res)=>{
     res.render('organizers/new.ejs')
 })
@@ -21,7 +21,8 @@ router.post('/', async (req, res)=>{
         const encryptedUserId = cryptojs.AES.encrypt(newOrganizer.id.toString(), process.env.SECRET)
         const encryptedUserIdString = encryptedUserId.toString()
         res.cookie('userId', encryptedUserIdString)
-        res.redirect('organizers/login',{name_error:"", exists_error:"", pass_error:""})
+        axios.get(`https://avatars.dicebear.com/api/adventurer/baby.svg`).then
+        res.render('organizers/login',{name_error:"", exists_error:"", pass_error:""})
     }
 })
 
@@ -42,6 +43,7 @@ router.post('/login', async (req, res)=>{
         const encryptedUserId = cryptojs.AES.encrypt(user.id.toString(), process.env.SECRET)
         const encryptedUserIdString = encryptedUserId.toString()
         res.cookie('userId', encryptedUserIdString)
+        
         res.redirect('/organizers/profile')
     }
 })
@@ -54,8 +56,11 @@ router.get('/logout', (req, res)=>{
 
 router.get('/profile', async (req, res)=>{
     const userSeshs = await db.session.findAll({where:{organizerId:res.locals.user.id}})
-
-res.render('organizers/profile', {userSeshs:userSeshs } )
+    let picLink;
+    axios.get(`https://ui-avatars.com/api/?length=1&name=${res.locals.user.username}`).then(function (response) {
+       picLink= response.config.url;
+       res.render('organizers/profile', {userSeshs:userSeshs ,picLink: picLink} )
+        });
 })
 
 router.post("/new-session",async (req, res)=>{
