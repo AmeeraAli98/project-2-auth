@@ -2,9 +2,14 @@ const { application } = require('express')
 const express = require('express')
 const db = require('../models')
 const router = express.Router()
+const axios = require("axios")
 router.get("/:name/:id", async (req,res)=>{
   const get_submissions = await db.submission.findAll({where:{sessionId:req.params.id}})
-  res.render("organizers/submissions", {submissions:get_submissions ,session_name:req.params.name})
+  let picLink="hi"
+  axios.get(`https://ui-avatars.com/api/?length=1&name=${res.locals.user.username}`).then(function (response) {
+     picLink= response.config.url;
+     res.render("organizers/submissions", {submissions:get_submissions ,session_name:req.params.name, picLink:picLink})
+      });
   })
 router.post("/upload", async (req, res) => {
     //verify if session exists

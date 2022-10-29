@@ -56,7 +56,7 @@ router.get('/logout', (req, res)=>{
 
 router.get('/profile', async (req, res)=>{
     const userSeshs = await db.session.findAll({where:{organizerId:res.locals.user.id}})
-    let picLink;
+    let picLink="hi"
     axios.get(`https://ui-avatars.com/api/?length=1&name=${res.locals.user.username}`).then(function (response) {
        picLink= response.config.url;
        res.render('organizers/profile', {userSeshs:userSeshs ,picLink: picLink} )

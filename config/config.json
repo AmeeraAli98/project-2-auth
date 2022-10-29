@@ -3,7 +3,8 @@
     "database": "submission_sys",
     "host": "127.0.0.1",
     "username":"postgres",
-    "password":""
+    "password":"ameera",
+    "dialect":"postgres"
   },
   "test": {
     "database": "database_test",
