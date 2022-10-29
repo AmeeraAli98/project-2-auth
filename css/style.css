@@ -54,6 +54,8 @@
   width:40%;
   height:50%;
   margin-left: 21rem;
+  background:#e5e5e5;
+  border: 1px solid black;
 }
 body{
   height: 50vh;

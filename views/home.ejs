@@ -1,12 +1,11 @@
-<div style="padding-left:3%">
-<div class="container">
-    <ul class="progressbar">
-        <li id="one" class="active"></li>
-        <li id="two"></li>
-    </ul>
-  </div>
+    <div class="container">
+        <ul class="progressbar">
+            <li id="one" class="active"></li>
+            <li id="two"></li>
+        </ul>
+    </div>
   <p id="question" class="display-5 fw-semibold">Who are you?</p>
-  <div id="init" class="container rounded-4 border border-dark pt-5 ps-8 shadow"> 
+  <div id="init" class="container rounded-4  pt-5 ps-8 shadow"> 
         <!-- selBtn class -->
         <button  class="btn btn-dark d-inline-block me-5 selBtn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="I'm here to submit files">
             <a style="color:white;text-decoration: none;"  href="/submit">Submitter</a>
@@ -15,7 +14,6 @@
         <a style="color:white;text-decoration: none;"  href="organizers/new">Organizer</a>
         </button>
   </div>
-</div>
 <% if(mess){%>
     <div class="alert alert-success text-center w-25" role="alert">
         <%=mess%>
