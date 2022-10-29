@@ -25,3 +25,21 @@
 
     </form>
 </div>
+<% if(exists_error){%>
+    <div class="alert alert-danger text-center w-50" role="alert">
+        <%=exists_error%>
+        
+      </div>
+<%}%>
+<% if(name_error){%>
+    <div class="alert alert-danger text-center w-50" role="alert">
+        <%=name_error%>
+        
+      </div>
+<%}%>
+<% if(pass_error){%>
+    <div class="alert alert-danger text-center w-50" role="alert">
+        <%=pass_error%>
+        
+      </div>
+<%}%>

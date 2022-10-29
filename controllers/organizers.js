@@ -66,12 +66,15 @@ router.get('/profile', async (req, res)=>{
 router.post("/new-session",async (req, res)=>{
     const [newSession, created] = await db.session.findOrCreate({where:{seshName: req.body.seshName}})
     if(!created){
+        console.log("didn't happen")
                     res.redirect("back")
                     
     } else {
         const user = await db.organizer.findOne({where:{username:res.locals.user.username}})
         await user.addSession(newSession)
-            res.redirect("/organizers/profile")
+        console.log(" happen")
+
+            res.redirect("back")
 
     }
    

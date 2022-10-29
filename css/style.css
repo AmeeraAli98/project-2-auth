@@ -127,4 +127,11 @@ header{
 #form-submit{
   margin-left: 15%;
 }
+.alert{
+  margin-left: 20%;
+  margin-top:5%;
+}
 
+.alert-success{
+  margin-left: 35%;
+}
