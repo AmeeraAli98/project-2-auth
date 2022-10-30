@@ -13,7 +13,7 @@ router.post('/', async (req, res)=>{
     const [newOrganizer, created] = await db.organizer.findOrCreate({where:{username: req.body.username}})
     if(!created){
         console.log('user already exists')
-        res.render('organizers/login.ejs', {exists_error: 'Looks like you already have an account! Try logging in :)', name_error:"",pass_error:""})
+        res.render('organizers/login', {exists_error: 'Looks like you already have an account! Try logging in :)', name_error:"",pass_error:""})
     } else {
         const hashedPassword = bcrypt.hashSync(req.body.password, 10)
         newOrganizer.password = hashedPassword
