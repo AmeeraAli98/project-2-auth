@@ -1,7 +1,7 @@
 <header>
 
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="search" placeholder="Search" size="50" )>
+        <input type="text" id="search" placeholder="Search" size="50">
 </header>
 <div id="top" class="d-flex justify-content-center">
     <span class="navbar-text fw-bold mt-2" style="font-size:25px">
@@ -9,16 +9,19 @@
       </span>
       <i class="fa-solid fa-circle-plus p-4 " id="plus" style="font-size:25px" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
     </div>
-<ul id="list-sessions" class="list-group shadow mt-3"> 
+<ul id="sesh-list" class="list-group shadow mt-3"> 
   <% userSeshs.forEach(ele=>{%>
-        <li class="list-group-item d-flex justify-content-between"><%= ele.dataValues.seshName%> 
-          <a href="/submissions/<%=ele.dataValues.seshName%>/<%=ele.dataValues.id%>" ><i class="fa-sharp fa-solid fa-arrow-right" style="color:black;font-size:26px"></i>
-        </a>
-        <form method="post" action="/submissions/delete">
-          <input type="hidden" name="id" value="<%=ele.dataValues.id%>"/>
+     <li class="list-group-item" id="ses-item">  
+      <%=ele.dataValues.seshName%> 
+      <a href="/submissions/<%=ele.dataValues.seshName%>/<%=ele.dataValues.id%>" ><i class="fa-sharp fa-solid fa-arrow-right" style="color:black;font-size:26px"></i>
+      </a>
+      <!-- delete form -->
+      <form method="post" action="/submissions/delete">
+        <!-- <input type="hidden" name="id" value="<%=ele.dataValues.id%>"/> -->
         <button><i class="fa-solid fa-trash"></i></button>
       </form>
-      </li> 
+     </li>
+    
         <%})%> 
 
        

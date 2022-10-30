@@ -137,3 +137,7 @@ header{
 .alert-success{
   margin-left: 35%;
 }
+#ses-item{
+  display: flex;
+  justify-content: space-between;
+}

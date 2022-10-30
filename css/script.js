@@ -4,14 +4,20 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
-
-
-  $("#search").on("keyup", function() {
+  $("#search-1").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#list-sessions li").filter(function() {
+    console.log(value)
+    $("#sub-list li").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
+
+    $("#search").on("keyup", function() {
+      var stringer = $(this).val().toLowerCase();
+      $("#sesh-list li").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(stringer) > -1)
+      });
+    });
   
    //the code for the dropdown
    $(function() { // Dropdown toggle
