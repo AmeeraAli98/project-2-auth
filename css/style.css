@@ -107,6 +107,12 @@ header{
  margin-left: 30%;
  z-index: 0;
 }
+#search-1{
+ height: 50px;
+ margin-top: 3%;
+ margin-left: 30%;
+ z-index: 0;
+}
 .list-group{
   width:50%;
   color:black;

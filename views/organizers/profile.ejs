@@ -13,7 +13,7 @@
   <% userSeshs.forEach(ele=>{%>
      <li class="list-group-item" id="ses-item">  
       <%=ele.dataValues.seshName%> 
-      <a href="/submissions/<%=ele.dataValues.seshName%>/<%=ele.dataValues.id%>" ><i class="fa-sharp fa-solid fa-arrow-right" style="color:black;font-size:26px"></i>
+      <a href="/submissions/<%=ele.dataValues.seshName%>/<%=ele.dataValues.id%>" ><i class="fa-solid fa-eye" style="color:black;font-size:20px;"></i>
       </a>
       <!-- delete form -->
       <form method="post" action="/submissions/delete">
