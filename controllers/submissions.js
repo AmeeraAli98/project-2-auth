@@ -14,6 +14,7 @@ router.get("/:name/:id", async (req,res)=>{
 router.post("/upload", async (req, res) => {
     //verify if session exists
     const session = await db.session.findOne({where:{seshName:req.body.seshName}})
+    console.log(session)
     // (B3-1) UPLOADED FILE & DESTINATION
     let upfile = req.files.upfile;
       updest = "Uploads" + "/" + upfile.name;
@@ -27,7 +28,7 @@ router.post("/upload", async (req, res) => {
           mime_type:req.files.upfile.mimetype,
           file_path:updest
         });
-        res.render("home", {mess:"uplodaded succesfully"})
+        res.redirect("/")
       
       }
       stepTwo();
