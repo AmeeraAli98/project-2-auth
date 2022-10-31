@@ -33,7 +33,7 @@ app.use("/css",express.static("css"))
 // ROUTES
 
 app.get('/', (req, res)=>{
-    res.render('home',{mess:""})
+    res.render('home')
 })
 app.get('/submit', (req, res)=>{
     res.render('submit')
